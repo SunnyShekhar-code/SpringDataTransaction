@@ -30,5 +30,17 @@ public class StudentService {
         studentRepository.save(student);
     }
 
+    @Transactional
+    public void createStudent(Student student,String deptName){
+
+        Department department= new Department();
+        department.setName(deptName);
+
+        departmentRepository.save(department);
+        student.setDepartment(department);
+
+        studentRepository.save(student);
+    }
+
     
 }
