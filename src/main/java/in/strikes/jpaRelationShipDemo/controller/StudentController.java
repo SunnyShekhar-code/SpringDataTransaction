@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import in.strikes.jpaRelationShipDemo.model.Student;
@@ -23,9 +24,10 @@ public class StudentController {
     }
 
     
-    public ResponseEntity<String> createStudent(@RequestBody Student student){
+    @PostMapping
+    public ResponseEntity<String> createStudent(@RequestBody Student student,@RequestParam Long dept_id){
 
-        studentService.createStudent(student);
+        studentService.createStudent(student,dept_id);
         return ResponseEntity.ok("Done");
 
     }

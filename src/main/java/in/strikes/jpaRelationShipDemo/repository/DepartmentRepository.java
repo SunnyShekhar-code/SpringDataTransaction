@@ -15,6 +15,10 @@ public class DepartmentRepository {
     public void save(Department department){
         entityManager.persist(department);
     }
+
+    public Department getDepartment(Long id){
+        return entityManager.find(Department.class, id);
+    }
     
     
     
