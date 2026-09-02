@@ -10,7 +10,7 @@ import in.strikes.jpaRelationShipDemo.model.Department;
 import in.strikes.jpaRelationShipDemo.service.DepartmentService;
 
 @RestController
-@RequestMapping("/api/department")
+@RequestMapping("/api/dept")
 public class DepartmentController {
 
     private DepartmentService departmentService;

@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import in.strikes.jpaRelationShipDemo.model.Department;
 import in.strikes.jpaRelationShipDemo.repository.DepartmentRepository;
+import jakarta.transaction.Transactional;
 
 
 @Service
@@ -15,6 +16,7 @@ public class DepartmentService {
         this.departmentRepository=departmentRepository;
     }
 
+    @Transactional
     public void createDepartment(Department department){
         departmentRepository.save(department);
     }
