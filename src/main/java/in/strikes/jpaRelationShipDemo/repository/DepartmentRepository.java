@@ -2,19 +2,20 @@ package in.strikes.jpaRelationShipDemo.repository;
 
 import org.springframework.stereotype.Repository;
 
-import in.strikes.jpaRelationShipDemo.model.Student;
+import in.strikes.jpaRelationShipDemo.model.Department;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
 @Repository
-public class StudentRepository {
+public class DepartmentRepository {
 
     @PersistenceContext
-    private EntityManager entityManager;
+    EntityManager entityManager;
 
-    public void save(Student student){
-        entityManager.persist(student);
+    public void save(Department department){
+        entityManager.persist(department);
     }
-
-
+    
+    
+    
 }

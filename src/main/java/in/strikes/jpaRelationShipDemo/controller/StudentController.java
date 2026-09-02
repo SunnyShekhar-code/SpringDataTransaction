@@ -21,5 +21,13 @@ public class StudentController {
     public StudentController(StudentService studentService){
         this.studentService=studentService;
     }
-        
+
+    
+    public ResponseEntity<String> createStudent(@RequestBody Student student){
+
+        studentService.createStudent(student);
+        return ResponseEntity.ok("Done");
+
+    }
+
 }
