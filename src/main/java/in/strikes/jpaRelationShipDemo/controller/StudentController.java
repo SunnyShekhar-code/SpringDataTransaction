@@ -21,35 +21,5 @@ public class StudentController {
     public StudentController(StudentService studentService){
         this.studentService=studentService;
     }
-
-    @PostMapping
-    public ResponseEntity<String> createStudent(@RequestBody Student student){
-       
-
-        studentService.createStudent(student);
-        return ResponseEntity.ok("Done");
-
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<String> updateStudent(@RequestBody Student student,@PathVariable long id) throws Exception{
-        studentService.updateStudent(student,id);
-        return ResponseEntity.ok("Student updated Successfully");
-
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<Student> getStudent(@PathVariable long id){
-        Student result=studentService.getStudent(id);
-        return ResponseEntity.ok(result);
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteStudent(@PathVariable long id) throws Exception{
-        studentService.deleteStudent(id);
-        return ResponseEntity.ok("Student deleted successfully");
-    }
-
-
-    
+        
 }
