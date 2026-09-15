@@ -1,12 +1,15 @@
 package in.strikes.jpaRelationShipDemo.model;
 
-import jakarta.persistence.Column;
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +21,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Student {
+public class Student2 {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,22 +29,13 @@ public class Student {
 
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "dept_id")
-    private Department department;
-
-    // private void addDepartment(Department department){
-    //     this.department=department;
-    //     this.department.getStudents().add(this);
-
-    // }
-
-    // private void removeDepartment(Department department){
-    //     this.department.remove(this);
-    //     this.department=null;
-    // }
-
-
+    @ManyToMany
+    @JoinTable(
+        name = "student_course",
+        joinColumns = @JoinColumn(name="student_id"),
+        inverseJoinColumns = @JoinColumn(name="course_id")
+    )
+    private List<Course> courses=new ArrayList<>();
 
     
 }
