@@ -25,19 +25,21 @@ public class StudentController {
 
     
     @PostMapping
-    public ResponseEntity<String> createStudent(@RequestBody Student student,@RequestParam Long dept_id){
+    public ResponseEntity<String> createStudent(@RequestBody Student student){
 
-        studentService.createStudent(student,dept_id);
+        studentService.createStudent(student);
         return ResponseEntity.ok("Done");
 
     }
 
-    @PostMapping("/withdepartment")
-    public ResponseEntity<String> createStudent(@RequestBody Student student,@RequestParam String deptName){
-
-        studentService.createStudent(student,deptName);
-        return ResponseEntity.ok("Done");
-
+    @GetMapping ("/{id}")
+    public ResponseEntity<Student> getStudent(@PathVariable  Long id){
+        Student student=studentService.fetchStudentById(id);
+        return ResponseEntity.ok(student);
     }
+
+
+
+   
 
 }

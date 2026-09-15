@@ -1,12 +1,10 @@
 package in.strikes.jpaRelationShipDemo.model;
 
-import jakarta.persistence.Column;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,20 +24,11 @@ public class Student {
 
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "dept_id")
-    private Department department;
+    private String email;
 
-    // private void addDepartment(Department department){
-    //     this.department=department;
-    //     this.department.getStudents().add(this);
+    private int age;
 
-    // }
-
-    // private void removeDepartment(Department department){
-    //     this.department.remove(this);
-    //     this.department=null;
-    // }
+    
 
 
 
