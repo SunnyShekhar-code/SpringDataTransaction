@@ -19,7 +19,7 @@ public interface StudentRepository extends JpaRepository<Student,Long>{
 
     @Query(value = """
             select * from Student where email=?1 and age=?2
-            """)
+            """, nativeQuery = true)
     Optional<Student> findByEmailAndage(String email, Long age);
     // Optional<Student> findByEmailAndage(@Param("email") String email, @Param("age") Long age);
 

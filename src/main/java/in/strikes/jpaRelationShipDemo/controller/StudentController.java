@@ -1,5 +1,7 @@
 package in.strikes.jpaRelationShipDemo.controller;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,6 +38,11 @@ public class StudentController {
     public ResponseEntity<Student> getStudent(@PathVariable  Long id){
         Student student=studentService.fetchStudentById(id);
         return ResponseEntity.ok(student);
+    }
+
+    @GetMapping ("/name")
+    public ResponseEntity<List<Student>> getAllStudent(){
+        return ResponseEntity.ok(studentService.fetchAll());
     }
 
 
