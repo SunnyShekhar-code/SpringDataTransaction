@@ -13,7 +13,7 @@ import in.strikes.jpaRelationShipDemo.model.Student;
 
 
 public interface StudentRepository extends JpaRepository<Student,Long>{
-
+        
     // Student save(Student student);
     // Optional<Student> findById(Long id);
 

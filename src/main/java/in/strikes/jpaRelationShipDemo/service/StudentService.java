@@ -3,6 +3,10 @@ package in.strikes.jpaRelationShipDemo.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -47,6 +51,17 @@ public class StudentService {
 
 
         return studentlist;
+    }
+
+    public List<Student> fetchByPage(int size, int pageNo){
+        Sort sort= Sort.by(Sort.Direction.ASC, "age");
+
+        Pageable pageable= PageRequest.of(pageNo, size,sort);
+
+        Page<Student> studentpage=studentRepository.findAll(pageable);
+
+        return studentpage.getContent();
+
     }
 
     

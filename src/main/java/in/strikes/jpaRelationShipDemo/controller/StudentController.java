@@ -40,6 +40,11 @@ public class StudentController {
         return ResponseEntity.ok(student);
     }
 
+    @GetMapping ("/all")
+    public ResponseEntity<List<Student>> getAllStudent(@RequestParam int pageNo, @RequestParam  int size ){
+        return ResponseEntity.ok(studentService.fetchByPage(size, pageNo));
+    }
+
     @GetMapping ("/name")
     public ResponseEntity<List<Student>> getAllStudent(){
         return ResponseEntity.ok(studentService.fetchAll());
