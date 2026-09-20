@@ -34,10 +34,14 @@ public class AccountService {
         Account toAccount= accountRepository.findById(toAccId).orElseThrow(()->new RuntimeException("invalid account id"));
 
         fromAccount.debit(amount);
+        accountRepository.saveAndFlush(fromAccount);
+    
         toAccount.credit(amount);
+        accountRepository.saveAndFlush(toAccount);
 
 
         transferRecordRepository.save(new TransferRecord(fromAccId,toAccId,amount,LocalDate.now()));
+        // throw new RuntimeException();
 
     }
 
