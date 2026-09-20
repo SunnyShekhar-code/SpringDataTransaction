@@ -28,43 +28,7 @@ public class StudentService {
     }
 
 
-    @Transactional
-    public void createStudent(Student student){
-
-        studentRepository.save(student);
-    }
-
-    public Student fetchStudentById(Long id){
-        Optional<Student> optionalStudent=studentRepository.findById(id);
-        return optionalStudent.get();
-    }
-
-    public List<Student> fetchAll(){
-
-        // Sort sort= Sort.by(Sort.Direction.ASC,"age");
-        Sort sort= Sort.by(Sort.Direction.DESC,"age").and(Sort.by("name").ascending());
-        List<Student> studentlist=studentRepository.findAll(sort);
-
-        // for(Student s: studentlist){
-        //     System.out.println(s);
-        // }
-
-
-        return studentlist;
-    }
-
-    public List<Student> fetchByPage(int size, int pageNo){
-        Sort sort= Sort.by(Sort.Direction.ASC, "age");
-
-        Pageable pageable= PageRequest.of(pageNo, size,sort);
-
-        Page<Student> studentpage=studentRepository.findAll(pageable);
-
-        return studentpage.getContent();
-
-    }
-
-    
+        
 
     
 }

@@ -25,31 +25,8 @@ public class StudentController {
         this.studentService=studentService;
     }
 
+
     
-    @PostMapping
-    public ResponseEntity<String> createStudent(@RequestBody Student student){
-
-        studentService.createStudent(student);
-        return ResponseEntity.ok("Done");
-
-    }
-
-    @GetMapping ("/{id}")
-    public ResponseEntity<Student> getStudent(@PathVariable  Long id){
-        Student student=studentService.fetchStudentById(id);
-        return ResponseEntity.ok(student);
-    }
-
-    @GetMapping ("/all")
-    public ResponseEntity<List<Student>> getAllStudent(@RequestParam int pageNo, @RequestParam  int size ){
-        return ResponseEntity.ok(studentService.fetchByPage(size, pageNo));
-    }
-
-    @GetMapping ("/name")
-    public ResponseEntity<List<Student>> getAllStudent(){
-        return ResponseEntity.ok(studentService.fetchAll());
-    }
-
 
 
    
