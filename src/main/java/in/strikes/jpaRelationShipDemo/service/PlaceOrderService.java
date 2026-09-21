@@ -1,6 +1,7 @@
 package in.strikes.jpaRelationShipDemo.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 
 import in.strikes.jpaRelationShipDemo.model.AuditPayment;
@@ -21,7 +22,7 @@ public class PlaceOrderService {
     }
 
 
-    @Transactional(propagation = Propagation.REQUIRED)
+    @Transactional(propagation = Propagation.REQUIRED,isolation=Isolation.READ_COMMITTED)
     public void placeOrder(String product, int price){
 
         OrderProduct req=new OrderProduct();
